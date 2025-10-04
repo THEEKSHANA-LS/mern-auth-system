@@ -1,12 +1,10 @@
-//in here we create api end points...
-
 import express from "express";
-import { login, logout, register } from "../controllers/userController.js";
+import userAuth from "../middleware/userAuth.js";
+import { getUserData } from "../controllers/userController.js";
 
-const authRouter = express.Router();
+const userRouter = express.Router();
 
-authRouter.post("/register", register);
-authRouter.post("/login", login);
-authRouter.post("/logout", logout);
+userRouter.get("/data", userAuth, getUserData);
 
-export default authRouter;
+export default userRouter;
+
